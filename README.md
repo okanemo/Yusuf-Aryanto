@@ -6,7 +6,7 @@
 
 ### SETUP .ENV
 
-``
+```
 APP_HOST=localhost
 APP_PORT=3001
 DB_HOST=localhost
@@ -17,7 +17,7 @@ DB_PASS=
 JWT_SECRET_KEY=ANYSECRETKEY
 
 ALLOWED_ORIGIN=*
-``
+```
 
 ### SETUP DATABASE
 
