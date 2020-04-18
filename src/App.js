@@ -1,25 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'semantic-ui-css/semantic.min.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import ManageUsers from './pages/ManageUsers';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route
+            exact
+            path="/login"
+            render={() => <Login />} />
+          <Route
+            exact
+            path="/register"
+            render={() => <Register />} />
+          <PrivateRoute
+            path="/dashboard"
+            render={() => <Dashboard />} />
+          <PrivateRoute
+            path="/manage-users"
+            render={() => <ManageUsers />} />
+          <Route
+            exact
+            path="/logout"
+            render={() => {
+              localStorage.removeItem('token');
+              return (<Redirect to="/login" />);
+            }} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
