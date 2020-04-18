@@ -2,10 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### SETUP .ENV
 
-``
+```
 REACT_APP_API_HOST=http://localhost:3001
 
-``
+```
 
 ## Available Scripts
 
